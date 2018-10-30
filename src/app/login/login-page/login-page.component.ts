@@ -28,7 +28,7 @@ export class LoginPageComponent {
             alert("ok");
            // window.location.href='/registration';
     } else {
-      //alert("doesnot matched");
+      alert("doesnot matched");
     }
   }
 
