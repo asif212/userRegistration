@@ -1,0 +1,25 @@
+<form class="login-form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <label>
+    <p class="label-txt">USERNAME</p>
+    <input type="text" class="input" name="username" required [(ngModel)]="username">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <label>
+    <p class="label-txt">PASSWORD</p>
+    <input type="text" class="input" name="password" required [(ngModel)]="password">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+  <div>
+    <button type="submit">SUBMIT</button>
+  </div>
+  <div *ngIf="validationSuccesful" routerLink="/registration">
+    hello
+  </div>
+
+</form>
+{{loginForm.value | json}}
+{{validationSuccesful}}
