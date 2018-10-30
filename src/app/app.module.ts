@@ -8,6 +8,7 @@ import { LoginPageComponent } from "./login/login-page/login-page.component";
 import { RegistrationFormComponent } from './createUesr/registration-form/registration-form.component';
 import { RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes  =[
   { path: 'login', component: LoginPageComponent },
   { path: 'registration', component: RegistrationFormComponent },
