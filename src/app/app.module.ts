@@ -5,13 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from "./login/login-page/login-page.component";
-import { RegistrationFormComponent } from './createUesr/registration-form/registration-form.component';
+import { RegistrationFormComponent } from './createUser/registration-form/registration-form.component';
 import { RouterModule, Routes } from '@angular/router';
-
+import { EditUserDetailComponent } from './createUser/editUser/edit-user-detail/edit-user-detail.component';
 
 const routes: Routes  =[
   { path: 'login', component: LoginPageComponent },
   { path: 'registration', component: RegistrationFormComponent },
+  { path: 'edit', component: EditUserDetailComponent },
   { path: '',  redirectTo: '/login', pathMatch: 'full' },
   { path: '**',  redirectTo: '/login', pathMatch: 'full' },
 
@@ -23,6 +24,7 @@ const routes: Routes  =[
     AppComponent,
     LoginPageComponent,
     RegistrationFormComponent,
+    EditUserDetailComponent,
   ],
   imports: [
     BrowserModule,FormsModule,HttpClientModule,RouterModule.forRoot(routes),

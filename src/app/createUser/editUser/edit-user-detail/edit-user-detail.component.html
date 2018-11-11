@@ -1,0 +1,47 @@
+<form class="Edit-form" #editForm=ngForm (ngSubmit)="editSubmit(editForm)">
+<div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit the user detail</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div  class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fa fa-user prefix grey-text"></i>
+          <input #input.focus type="text" id="editName" class="form-control validate" name="editName" [(ngModel)]="editName"  >
+          <label data-error="wrong" data-success="right" for="editName">Name</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input #input type="text"  id="editRoll" class="form-control validate" name="editRoll" [(ngModel)]="editRoll">
+          <label data-error="wrong"  data-success="right" for="editRoll">Roll number</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="fa fa-tag prefix grey-text"></i>
+          <input #input type="text" id="editClass" class="form-control validate" name="editClass" [(ngModel)]="editClass" >
+          <label data-error="wrong" data-success="right" for="editClass" >Class</label>
+        </div>
+
+        <div class="md-form">
+          <i class="fa fa-pencil prefix grey-text"></i>
+          <input #focusInput type="text" id="editAge" class="form-control validate"  name="editAge" [(ngModel)]="editAge">
+          <label data-error="wrong" data-success="right" for="editAge">Age</label>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="submit"  class="btn btn-unique">Upadte<i class="fa fa-paper-plane-o ml-1"></i></button>
+      </div>
+      {{editForm.value | json}}
+    </div>
+  </div>
+</div>
+
+</form>
+

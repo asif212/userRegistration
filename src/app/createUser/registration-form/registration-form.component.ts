@@ -4,19 +4,20 @@ import { userRegistrationData } from 'src/app/models/registrationUser.models';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-
+import { EditUserDetailComponent } from '../editUser/edit-user-detail/edit-user-detail.component';
 @Component({
     selector: 'app-registration-form',
     templateUrl: './registration-form.component.html',
     styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent implements OnInit {
-
+    
     UserDataList_observable: Observable<userRegistrationData[]>;
     UserDataList : userRegistrationData[];
     registrationDetail: userRegistrationData;
-    constructor(private httpClient: HttpClient) { }
-    
+   // private editDetailClass :EditUserDetailComponent["value"];
+    constructor(private httpClient: HttpClient ) { }
+    currentValue: string;
     
     registrationSubmit(registrationForm: NgForm): void {
         //console.log(registrationForm.value);
@@ -44,6 +45,23 @@ export class RegistrationFormComponent implements OnInit {
 
 
     }
+
+    //for rakesh
+    editUserData(value:any): void
+    {
+        // console.log(value);
+        // this.httpClient.get<userRegistrationData>("http://127.0.0.1:3000/posts/"+value)
+        // .pipe(map((response:userRegistrationData) => <userRegistrationData>response)).subscribe((thisData) => 
+        // { console.log(thisData); this.editDetailClass = new EditUserDetailComponent();
+        //     this.editDetailClass.pushData(thisData) ; 
+        // }
+        //     );
+        console.log(value);
+        this.currentValue = value;
+        
+    }
+  
+
 
     showDataOnList(): void {
          this.httpClient.get<userRegistrationData[]>("http://127.0.0.1:3000/posts")
