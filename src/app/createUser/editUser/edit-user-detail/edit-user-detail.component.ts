@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild, ViewChildren, AfterViewInit, ElementRef, HostListener, Input, Injectable, AfterViewChecked } from '@angular/core';
+import { Component, OnInit,ViewChild, ViewChildren, AfterViewInit, ElementRef, HostListener, Input, Injectable, AfterViewChecked, AfterContentInit, ContentChild } from '@angular/core';
 import {ModalDirective} from 'mdbootstrap';
 import { userRegistrationData } from 'src/app/models/registrationUser.models';
 import { NgForm } from '@angular/forms';
@@ -11,42 +11,49 @@ import { RegistrationFormComponent } from '../../registration-form/registration-
   templateUrl: './edit-user-detail.component.html',
   styleUrls: ['./edit-user-detail.component.css']
 })
-@Injectable()
-export class EditUserDetailComponent implements OnInit , AfterViewChecked {
+
+export class EditUserDetailComponent implements OnInit , AfterViewInit {
+
   
-  public editThisDetail: userRegistrationData;
   //  editName : string=  "abcd" ;
   //  editRoll:string;
   //  editClass:string;
   //  editAge:string;
- 
+  public editThisDetail: userRegistrationData;
   value : string;
-constructor(private httpClient: HttpClient){}
+constructor(private httpClient: HttpClient, ){}
 
 
-  @ViewChild('modalLoginForm') modalLoginForm: ModalDirective;
+  //@ViewChild('modalLoginForm') modalLoginForm: ModalDirective;
+  @ViewChild('RegistrationFormComponent') registrationFormComponent: RegistrationFormComponent;
+
  // @ViewChild('focusInput') focusInput: ElementRef; 
  // @HostListener('focusout', ['$event']) public onListenerTriggered(event: any): void { this.setFocusToInput(); } 
  // setFocusToInput() { this.focusInput.nativeElement.focus(); }
-@Input() registraionComponent :  RegistrationFormComponent;
+
+
+ //public registraionComponent :  RegistrationFormComponent;
 
 
   editSubmit(editForm: NgForm)
   {
+    console.log("asif",this.registrationFormComponent.currentValue);
     //console.log("qqqq", this.editName);
    // console.log(editForm.value);
-    
   }
 
-//for rakesh
+
   pushData()
   {
-     this.value = this.registraionComponent.currentValue;
-    // this.httpClient.get<userRegistrationData>("http://127.0.0.1:3000/posts/"+ this.value)
-    // .pipe(map((response:userRegistrationData) => <userRegistrationData>response)).subscribe((thisData) => 
-    // { console.log(thisData); this.editThisDetail = thisData;
-    // }
-    //     );
+    
+    console.log("asif");
+    console.log("asif",this.registrationFormComponent.currentValue);
+     this.value = this.registrationFormComponent.currentValue;
+     this.httpClient.get<userRegistrationData>("http://127.0.0.1:3000/posts/"+ this.value)
+     .pipe(map((response:userRegistrationData) => <userRegistrationData>response)).subscribe((thisData) => 
+     { console.log(thisData); this.editThisDetail = thisData;
+     }
+         );
 
 console.log(this.editThisDetail.regName);
   //   this.editName = this.editThisDetail.regName;
@@ -58,19 +65,19 @@ console.log(this.editThisDetail.regName);
   //   this.editClass= this.editThisDetail.regClass;
   //   this.editAge= this.editThisDetail.regAge;
     //console.log("asif",this.editName);
-
+   
   }
 
-  ngAfterViewChecked()
+  ngAfterViewInit()
   {
     this.pushData();
   }
 
   ngOnInit() {
     
-   
-    //$('#editName').focus();
     
+    //$('#editName').focus();
+   
   }
 
   

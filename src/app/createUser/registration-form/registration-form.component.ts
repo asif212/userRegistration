@@ -11,13 +11,12 @@ import { EditUserDetailComponent } from '../editUser/edit-user-detail/edit-user-
     styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent implements OnInit {
-    
     UserDataList_observable: Observable<userRegistrationData[]>;
     UserDataList : userRegistrationData[];
     registrationDetail: userRegistrationData;
    // private editDetailClass :EditUserDetailComponent["value"];
     constructor(private httpClient: HttpClient ) { }
-    currentValue: string;
+    public currentValue: string;
     
     registrationSubmit(registrationForm: NgForm): void {
         //console.log(registrationForm.value);
@@ -46,7 +45,7 @@ export class RegistrationFormComponent implements OnInit {
 
     }
 
-    //for rakesh
+   
     editUserData(value:any): void
     {
         // console.log(value);
@@ -56,9 +55,8 @@ export class RegistrationFormComponent implements OnInit {
         //     this.editDetailClass.pushData(thisData) ; 
         // }
         //     );
-        console.log(value);
+        //console.log(this.currentValue);
         this.currentValue = value;
-        
     }
   
 
